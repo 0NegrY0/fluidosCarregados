@@ -76,6 +76,14 @@ void movement(PARTICULA particulas[]){
             particulas[i].vector.z += Cone * DT * particulas[i].vel.z + Ctwo * DT2 * particulas[i].lennard.z + y[i].z * desv_r;              //INICIAR F
 
 
+            if(iteracao == 0){
+                int j = 0;
+                for(j = 0; j < PARTICULA_MAX_MOV; j++ ){
+                    printf("SEGUNDA %d X:%lf y:%lf z:%lf\n", i, particulas[i].vector.x, particulas[i].vector.y, particulas[i].vector.z);
+                }              
+            }
+
+
             if(fabs(particulas[i].vector.x) > LX/2.0){
                 particulas[i].vector.x = particulas[i].vector.x - LX * (fabs(particulas[i].vector.x) / particulas[i].vector.x);
             }       
