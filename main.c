@@ -28,7 +28,7 @@ int main(){
         particulas[i].vector.x = 0;
         particulas[i].vector.y = 0;
         particulas[i].vector.z = 0;
-        particulas[i].vel.x = 1.0;
+        particulas[i].vel.x = 0;
         particulas[i].vel.y = 0;
         particulas[i].vel.z = 0;
         particulas[i].lennard.x = 0;
