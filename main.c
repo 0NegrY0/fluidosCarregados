@@ -49,7 +49,7 @@ int main(){
 //        printf("MAIN\n particula %d    X: %lf      Y: %lf      Z: %lf      Carga: %d       Raio: %lf\n", 
 //        i, particulas[i].vector.x, particulas[i].vector.y, particulas[i].vector.z, particulas[i].carga, particulas[i].raio);
 //    }
-    calculaLennardJhonson(particulas);
+    //calculaLennardJhonson(particulas);
 
     imprimeArquivo(particulas, colocados);
 

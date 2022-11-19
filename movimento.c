@@ -57,9 +57,9 @@ void movement(PARTICULA particulas[]){
 
         calculaLennardJhonson(particulas);
 
-        /*for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
+        for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
             printf("PRIMEIRA %d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-        }*/             
+        }             
 
         //PRIMEIRO LOOPZIN ESPACO
         for(i = 0; i < PARTICULA_MAX_MOV; ++i){
@@ -76,12 +76,12 @@ void movement(PARTICULA particulas[]){
             particulas[i].vector.z += Cone * DT * particulas[i].vel.z + Ctwo * DT2 * particulas[i].lennard.z + y[i].z * desv_r;              //INICIAR F
 
 
-            if(iteracao == 0){
+            /*if(iteracao == 0){
                 int j = 0;
                 for(j = 0; j < PARTICULA_MAX_MOV; j++ ){
                     printf("SEGUNDA %d X:%lf y:%lf z:%lf\n", i, particulas[i].vector.x, particulas[i].vector.y, particulas[i].vector.z);
                 }              
-            }
+            }*/                 //RETORNA UM VALOR MUITO ALTO
 
 
             if(fabs(particulas[i].vector.x) > LX/2.0){

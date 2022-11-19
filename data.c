@@ -104,18 +104,18 @@ int imprimeArquivo(PARTICULA particulas[], int colocados){
 }
 
 
-void calculaLennardJhonson(PARTICULA particulas[]){
+void calculaLennardJhonson(PARTICULA particulas[]){                 //TEM ERRO AQUI
 
     VECTOR d;
     VECTOR f;             
-    double cutwca = 1.12246204830937;
+    double cutwca = pow(2.0, 1.0/6.0);
     unsigned int i, j;
     unsigned int set = 0;
     double dist;
     double cfive;
-    unsigned int Lx = 2 * caixaX_MAX;            //USANDO LX COMO TAMANHO DA CAIXA
-    unsigned int Ly = 2 * caixaY_MAX;
-    unsigned int Lz = 2 * caixaZ_MAX;
+    double Lx = 2 * caixaX_MAX;            //USANDO LX COMO TAMANHO DA CAIXA
+    double Ly = 2 * caixaY_MAX;
+    double Lz = 2 * caixaZ_MAX;
     
     for(i = 0; i< PARTICULA_MAX; i++){
         particulas[i].lennard.x = 0.0;
@@ -125,19 +125,19 @@ void calculaLennardJhonson(PARTICULA particulas[]){
 
 
 
-    for(i = 0; i < PARTICULA_MAX; i ++){
-        for(j = i + 1; j < PARTICULA_MAX; j ++){
-            d.x = particulas[i].vector.x - particulas[j].vector.x; 
-            d.x = d.x-round(d.x/Lx) * Lx;                                   
+    for(i = 0; i < PARTICULA_MAX; ++i){
+        for(j = i + 1; j < PARTICULA_MAX; ++j){
+            d.x = particulas[j].vector.x - particulas[i].vector.x; 
+            d.x = d.x - round(d.x/Lx) * Lx;                                   
 
-            d.y = particulas[i].vector.y - particulas[j].vector.y; 
-            d.y = d.y-round(d.y/Ly) * Ly;                                   
+            d.y = particulas[j].vector.y - particulas[i].vector.y; 
+            d.y = d.y - round(d.y/Ly) * Ly;                                   
 
-            d.z = particulas[i].vector.z - particulas[j].vector.z; 
-            d.z = d.z-round(d.z/Lz) * Lz;                                   
+            d.z = particulas[j].vector.z - particulas[i].vector.z; 
+            d.z = d.z - round(d.z/Lz) * Lz;                                   
 
 
-            dist = sqrt(d.x*d.x + d.y*d.y + d.z*d.z);
+            dist = sqrt(d.x*d.x + d.y*d.y + d.z*d.z);   //FUNCIONANDO
 
             //printf("%lf\n", dist);                                          //debug
 
@@ -169,9 +169,9 @@ void calculaLennardJhonson(PARTICULA particulas[]){
     }
 
 
-    /*for(i = 0; i < PARTICULA_MAX; i++ ){
+    for(i = 0; i < PARTICULA_MAX; i++ ){
         printf("%d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-    }*/
+    }
 }
 
 
