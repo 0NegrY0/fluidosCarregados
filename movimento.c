@@ -59,7 +59,7 @@ void movement(PARTICULA particulas[]){
 
         /*for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
             printf("PRIMEIRA %d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-        }*/             //RETORNA TUDO ZERO no primeiro
+        }*/             
 
         //PRIMEIRO LOOPZIN ESPACO
         for(i = 0; i < PARTICULA_MAX_MOV; i++){
@@ -78,21 +78,24 @@ void movement(PARTICULA particulas[]){
 
             if(fabs(particulas[i].vector.x) > LX/2.0){
                 particulas[i].vector.x = particulas[i].vector.x - LX * (fabs(particulas[i].vector.x) / particulas[i].vector.x);
+                printf("X");
             }       
-            if(fabs(particulas[i].vector.x) > LY/2.0){
+            if(fabs(particulas[i].vector.y) > LY/2.0){
                 particulas[i].vector.y = particulas[i].vector.y - LY * (fabs(particulas[i].vector.y) / particulas[i].vector.y);
+                printf("Y");
             }
-            if(fabs(particulas[i].vector.x) > LZ/2.0){
+            if(fabs(particulas[i].vector.z) > LZ/2.0){
                 particulas[i].vector.z = particulas[i].vector.z - LZ * (fabs(particulas[i].vector.z) / particulas[i].vector.z);
+                printf("Z");
             }
         }
 
 
         calculaLennardJhonson(particulas);
 
-        for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
+        /*for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
             printf("SEGUNDA %d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-        }               //BUGA NA PRIMEIRA LIDA
+        }*/              
         
 
         for(i = 0; i < PARTICULA_MAX_MOV; i++){
