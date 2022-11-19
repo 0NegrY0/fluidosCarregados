@@ -76,13 +76,13 @@ void movement(PARTICULA particulas[]){
             particulas[i].vector.z += Cone * DT * particulas[i].vel.z + Ctwo * DT2 * particulas[i].lennard.z + y[i].z * desv_r;              //INICIAR F
 
 
-            if(fabs(particulas[i].vector.x) > LX/2){
+            if(fabs(particulas[i].vector.x) > LX/2.0){
                 particulas[i].vector.x = particulas[i].vector.x - LX * (fabs(particulas[i].vector.x) / particulas[i].vector.x);
             }       
-            if(fabs(particulas[i].vector.x) > LY/2){
+            if(fabs(particulas[i].vector.x) > LY/2.0){
                 particulas[i].vector.y = particulas[i].vector.y - LY * (fabs(particulas[i].vector.y) / particulas[i].vector.y);
             }
-            if(fabs(particulas[i].vector.x) > LZ/2){
+            if(fabs(particulas[i].vector.x) > LZ/2.0){
                 particulas[i].vector.z = particulas[i].vector.z - LZ * (fabs(particulas[i].vector.z) / particulas[i].vector.z);
             }
         }
