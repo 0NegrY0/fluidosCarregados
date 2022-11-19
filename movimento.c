@@ -62,7 +62,7 @@ void movement(PARTICULA particulas[]){
         }*/             
 
         //PRIMEIRO LOOPZIN ESPACO
-        for(i = 0; i < PARTICULA_MAX_MOV; i++){
+        for(i = 0; i < PARTICULA_MAX_MOV; ++i){
             old.x = particulas[i].vector.x;
             old.y = particulas[i].vector.y;
             old.z = particulas[i].vector.z;
@@ -78,15 +78,12 @@ void movement(PARTICULA particulas[]){
 
             if(fabs(particulas[i].vector.x) > LX/2.0){
                 particulas[i].vector.x = particulas[i].vector.x - LX * (fabs(particulas[i].vector.x) / particulas[i].vector.x);
-                printf("X");
             }       
             if(fabs(particulas[i].vector.y) > LY/2.0){
                 particulas[i].vector.y = particulas[i].vector.y - LY * (fabs(particulas[i].vector.y) / particulas[i].vector.y);
-                printf("Y");
             }
             if(fabs(particulas[i].vector.z) > LZ/2.0){
                 particulas[i].vector.z = particulas[i].vector.z - LZ * (fabs(particulas[i].vector.z) / particulas[i].vector.z);
-                printf("Z");
             }
         }
 
@@ -98,10 +95,10 @@ void movement(PARTICULA particulas[]){
         }*/              
         
 
-        for(i = 0; i < PARTICULA_MAX_MOV; i++){
+        for(i = 0; i < PARTICULA_MAX_MOV; ++i){
             particulas[i].vel.x = Co * particulas[i].vel.x + (Cone - Ctwo) * DT * particulas[i].lennard.x + Ctwo * DT * particulas[i].lennard.x + desv_v * (Cvv * y[i].x + CvvTwo * gausran());                 //era Fold no lugar do primeiro lennard
-            particulas[i].vel.y = Co * particulas[i].vel.y + (Cone - Ctwo) * DT * particulas[i].lennard.x + Ctwo * DT * particulas[i].lennard.y + desv_v * (Cvv * y[i].y + CvvTwo * gausran());
-            particulas[i].vel.z = Co * particulas[i].vel.z + (Cone - Ctwo) * DT * particulas[i].lennard.x + Ctwo * DT * particulas[i].lennard.z + desv_v * (Cvv * y[i].z + CvvTwo * gausran());
+            particulas[i].vel.y = Co * particulas[i].vel.y + (Cone - Ctwo) * DT * particulas[i].lennard.y + Ctwo * DT * particulas[i].lennard.y + desv_v * (Cvv * y[i].y + CvvTwo * gausran());
+            particulas[i].vel.z = Co * particulas[i].vel.z + (Cone - Ctwo) * DT * particulas[i].lennard.z + Ctwo * DT * particulas[i].lennard.z + desv_v * (Cvv * y[i].z + CvvTwo * gausran());
 
         //    Fold[i].x = particulas[i].lennard.x;
         //    Fold[i].y = particulas[i].lennard.y;
