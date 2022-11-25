@@ -169,15 +169,15 @@ void calculaLennardJhonson(PARTICULA particulas[]){                 //TEM ERRO A
     }
 
 
-    for(i = 0; i < PARTICULA_MAX; i++ ){
+/*    for(i = 0; i < PARTICULA_MAX; i++ ){
         printf("%d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-    }
+    }*/
 }
 
 
 // generate gaussian random_numbers
-double gausran()
-{                                                                                                                                                                           
+double gausran(){
+    // generate gaussianrandom_numbers                                                                   
     int g;
     double ran1,ran2,PI,R1,R2,res;
     ran1 = (double)rand()/RAND_MAX;

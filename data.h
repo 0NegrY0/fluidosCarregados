@@ -15,8 +15,10 @@ typedef struct str_particula{
     VECTOR vector;
     VECTOR lennard;
     VECTOR vel;
+    VECTOR gaussian;
     double raio;
     int carga;
+    int id;
 }PARTICULA;
 
 double numeroAleatorio(double min, double max);
@@ -28,3 +30,5 @@ int imprimeArquivo(PARTICULA particulas[], int colocados);
 void calculaLennardJhonson(PARTICULA particulas[]);
 
 void movement(PARTICULA particulas[]);
+
+double gausran();

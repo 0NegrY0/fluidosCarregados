@@ -26,7 +26,6 @@ void movement(PARTICULA particulas[]){
     unsigned int i;
 
     VECTOR old;
-    VECTOR y[PARTICULA_MAX_MOV];                //GAUSSRAM
     VECTOR Fold[PARTICULA_MAX_MOV];             //NAO USADO
     
     FILE *arq;
@@ -42,7 +41,7 @@ void movement(PARTICULA particulas[]){
     Co = exp(-(Con));
     Cone = ((1 - Co) / Con);
     Ctwo = ((1 - Cone) / Con);
-    desv_r = DT * sqrt((1 / Con) * (2 - ((1/Con) * (3 - (4*Co) + pow(Co, 2)))));
+    desv_r = DT*sqrt((1/Con) * (2 - ((1/Con) * (3 - (4*Co) + (Co*Co)))));
 
     desv_v = sqrt(1 - pow(Co, 2));
     Cvv = (DT / Con / desv_v / desv_r) * (1 - Co) * (1 - Co);
@@ -57,9 +56,9 @@ void movement(PARTICULA particulas[]){
 
         calculaLennardJhonson(particulas);
 
-        for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
+        /*for(i = 0; i < PARTICULA_MAX_MOV; i++ ){
             printf("PRIMEIRA %d X:%lf y:%lf z:%lf\n", i, particulas[i].lennard.x, particulas[i].lennard.y, particulas[i].lennard.z);
-        }             
+        }*/             
 
         //PRIMEIRO LOOPZIN ESPACO
         for(i = 0; i < PARTICULA_MAX_MOV; ++i){
@@ -67,13 +66,15 @@ void movement(PARTICULA particulas[]){
             old.y = particulas[i].vector.y;
             old.z = particulas[i].vector.z;
 
-            y[i].x = gausran();             
-            y[i].y = gausran();
-            y[i].z = gausran();
+            particulas[i].gaussian.x = gausran();             
+            particulas[i].gaussian.y = gausran();
+            particulas[i].gaussian.z = gausran();
 
-            particulas[i].vector.x += Cone * DT * particulas[i].vel.x + Ctwo * DT2 * particulas[i].lennard.x + y[i].x * desv_r;              //INICIAR F    era Fold no lugar de lennard
-            particulas[i].vector.y += Cone * DT * particulas[i].vel.y + Ctwo * DT2 * particulas[i].lennard.y + y[i].y * desv_r;              //INICIAR F
-            particulas[i].vector.z += Cone * DT * particulas[i].vel.z + Ctwo * DT2 * particulas[i].lennard.z + y[i].z * desv_r;              //INICIAR F
+            //PROBLEMA NO GAUSSRAN
+
+            particulas[i].vector.x += Cone * DT * particulas[i].vel.x + Ctwo * DT2 * particulas[i].lennard.x + particulas[i].gaussian.x * desv_r;              //INICIAR F    era Fold no lugar de lennard
+            particulas[i].vector.y += Cone * DT * particulas[i].vel.y + Ctwo * DT2 * particulas[i].lennard.y + particulas[i].gaussian.y * desv_r;              //INICIAR F
+            particulas[i].vector.z += Cone * DT * particulas[i].vel.z + Ctwo * DT2 * particulas[i].lennard.z + particulas[i].gaussian.z * desv_r;              //INICIAR F
 
 
             /*if(iteracao == 0){
@@ -104,9 +105,9 @@ void movement(PARTICULA particulas[]){
         
 
         for(i = 0; i < PARTICULA_MAX_MOV; ++i){
-            particulas[i].vel.x = Co * particulas[i].vel.x + (Cone - Ctwo) * DT * particulas[i].lennard.x + Ctwo * DT * particulas[i].lennard.x + desv_v * (Cvv * y[i].x + CvvTwo * gausran());                 //era Fold no lugar do primeiro lennard
-            particulas[i].vel.y = Co * particulas[i].vel.y + (Cone - Ctwo) * DT * particulas[i].lennard.y + Ctwo * DT * particulas[i].lennard.y + desv_v * (Cvv * y[i].y + CvvTwo * gausran());
-            particulas[i].vel.z = Co * particulas[i].vel.z + (Cone - Ctwo) * DT * particulas[i].lennard.z + Ctwo * DT * particulas[i].lennard.z + desv_v * (Cvv * y[i].z + CvvTwo * gausran());
+            particulas[i].vel.x = Co * particulas[i].vel.x + (Cone - Ctwo) * DT * particulas[i].lennard.x + Ctwo * DT * particulas[i].lennard.x + desv_v * (Cvv * particulas[i].gaussian.x + CvvTwo * gausran());                 //era Fold no lugar do primeiro lennard
+            particulas[i].vel.y = Co * particulas[i].vel.y + (Cone - Ctwo) * DT * particulas[i].lennard.y + Ctwo * DT * particulas[i].lennard.y + desv_v * (Cvv * particulas[i].gaussian.y + CvvTwo * gausran());
+            particulas[i].vel.z = Co * particulas[i].vel.z + (Cone - Ctwo) * DT * particulas[i].lennard.z + Ctwo * DT * particulas[i].lennard.z + desv_v * (Cvv * particulas[i].gaussian.z + CvvTwo * gausran());
 
         //    Fold[i].x = particulas[i].lennard.x;
         //    Fold[i].y = particulas[i].lennard.y;

@@ -34,6 +34,7 @@ int main(){
         particulas[i].lennard.x = 0;
         particulas[i].lennard.y = 0;
         particulas[i].lennard.z = 0;
+        particulas[i].id = i;
 
     }
     
