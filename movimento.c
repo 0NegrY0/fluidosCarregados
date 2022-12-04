@@ -30,6 +30,12 @@ void movement(PARTICULA particulas[]){
     
     FILE *arq;
 
+    FILE *arqAnim;
+
+    arqAnim = fopen("animation.txt", "w");          //Usando para criar o arquivo de animação
+
+
+
     char nome[25];
 
     int numArq = 0;
@@ -137,7 +143,7 @@ void movement(PARTICULA particulas[]){
 
         //ANIMACAO
 
-        if(iteracao >= 10000){
+        /*if(iteracao >= 10000){
             sprintf(nome, "mov_anim%d.txt",numArq);
             arq = fopen(nome, "w");
             fprintf(arq, "%d\n\n", PARTICULA_MAX_MOV);
@@ -157,6 +163,30 @@ void movement(PARTICULA particulas[]){
             fprintf(arq, "\n");
             fclose(arq);
             numArq++;
+            iteracao = 9990;
+        }
+        else{
+            iteracao++;
+        }*/
+
+        //ARQUIVO UNICO
+
+        if(iteracao >= 10000){
+            fprintf(arqAnim, "%d\n\n", PARTICULA_MAX_MOV);
+
+            for(i = 0; i < PARTICULA_MAX_MOV; i++){
+                if(i < PARTICULA_MAX_MOV/2){
+                    fprintf(arqAnim, "Na ");
+                }
+
+                else{
+                    fprintf(arqAnim, "Cl ");
+                }
+
+                fprintf(arqAnim, "%lf %lf %lf\n", particulas[i].vector.x, particulas[i].vector.y, particulas[i].vector.z);
+            }
+
+            fprintf(arqAnim, "\n");
             iteracao = 9990;
         }
         else{

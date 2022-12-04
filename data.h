@@ -31,4 +31,4 @@ void calculaLennardJhonson(PARTICULA particulas[]);
 
 void movement(PARTICULA particulas[]);
 
-double gausran();
+double gausran();                       //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  GAUSRAN FILHA DA PUTAAAAAAAAAAAAAAAAAAAAAAAA
